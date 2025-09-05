@@ -1,6 +1,6 @@
 {
   "name": "@lviffy/bvc-eth",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Blockchain Version Control - Decentralized version control system powered by blockchain and IPFS",
   "main": "bin/bvc.js",
   "bin": {
