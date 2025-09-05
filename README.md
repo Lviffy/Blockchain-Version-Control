@@ -2,7 +2,7 @@
 
 A decentralized version control system inspired by Git, but powered by **blockchain** and **IPFS**.
 
-[![npm version](https://badge.fury.io/js/bvc.svg)](https://badge.fury.io/js/bvc)
+[![npm version](https://badge.fury.io/js/bvc-eth.svg)](https://badge.fury.io/js/bvc-eth)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## ✨ Features
