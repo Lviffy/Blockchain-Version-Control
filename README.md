@@ -53,9 +53,26 @@ bvc-eth add index.js
 bvc-eth commit -m "Initial commit"
 ```
 
-### 4. View History
+### 4. Push to Blockchain
+```bash
+bvc-eth push
+```
+
+### 5. View History
 ```bash
 bvc-eth log
+```
+
+### 6. Collaborate
+```bash
+# Share your repository ID with others
+bvc-eth list --mine
+
+# Others can clone your repository
+bvc-eth clone <your-repo-id>
+
+# Pull latest changes
+bvc-eth pull
 ```
 
 ## 📋 Commands
@@ -68,9 +85,11 @@ bvc-eth log
 | `bvc-eth commit -m "msg"` | Create commit with IPFS upload | ✅ Working |
 | `bvc-eth status` | Show repository status | ✅ Working |
 | `bvc-eth log` | View commit history | ✅ Working |
-| `bvc-eth push` | Push to blockchain | 🚧 Planned |
-| `bvc-eth pull` | Pull from blockchain | 🚧 Planned |
-| `bvc-eth clone <id>` | Clone repository | 🚧 Planned |
+| `bvc-eth push` | Push commits to blockchain | ✅ Working |
+| `bvc-eth pull` | Pull commits from blockchain | ✅ Working |
+| `bvc-eth clone <id>` | Clone repository from blockchain | ✅ Working |
+| `bvc-eth checkpoint` | Create commit batches | ✅ Working |
+| `bvc-eth list` | List all repositories | ✅ Working |
 
 ## ⚙️ Configuration
 

@@ -14,6 +14,7 @@ const pullCommand = require('../lib/commands/pull');
 const cloneCommand = require('../lib/commands/clone');
 const configCommand = require('../lib/commands/config');
 const checkpointCommand = require('../lib/commands/checkpoint');
+const listCommand = require('../lib/commands/list');
 
 const program = new Command();
 
@@ -55,6 +56,7 @@ program.addCommand(pullCommand);
 program.addCommand(cloneCommand);
 program.addCommand(configCommand);
 program.addCommand(checkpointCommand);
+program.addCommand(listCommand);
 
 // Custom help command
 program

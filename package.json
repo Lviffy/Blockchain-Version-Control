@@ -1,6 +1,6 @@
 {
   "name": "bvc-eth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Blockchain Version Control - Decentralized version control system powered by blockchain and IPFS",
   "main": "bin/bvc.js",
   "bin": {
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "npx hardhat test",
+    "test:all": "./test-all-features.sh",
     "compile": "npx hardhat compile",
     "deploy": "npx hardhat run scripts/deploy.js --network sepolia",
     "deploy-local": "npx hardhat run scripts/deploy.js --network localhost",
