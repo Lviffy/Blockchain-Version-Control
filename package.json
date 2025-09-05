@@ -16,7 +16,8 @@
     "balance": "npx hardhat run scripts/check-balance.js --network sepolia",
     "balance-local": "npx hardhat run scripts/check-balance.js --network localhost",
     "info": "npx hardhat run scripts/contract-info.js --network sepolia",
-    "info-local": "npx hardhat run scripts/contract-info.js --network localhost"
+    "info-local": "npx hardhat run scripts/contract-info.js --network localhost",
+    "check-setup": "node scripts/check-sepolia-setup.js"
   },
   "repository": {
     "type": "git",
