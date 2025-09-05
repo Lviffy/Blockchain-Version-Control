@@ -1,10 +1,13 @@
 {
-  "name": "bvc-eth",
+  "name": "@lviffy/bvc-eth",
   "version": "1.0.2",
   "description": "Blockchain Version Control - Decentralized version control system powered by blockchain and IPFS",
   "main": "bin/bvc.js",
   "bin": {
     "bvc": "bin/bvc.js"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "test": "npx hardhat test",
