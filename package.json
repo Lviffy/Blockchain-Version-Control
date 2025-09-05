@@ -12,7 +12,11 @@
     "deploy": "npx hardhat run scripts/deploy.js --network sepolia",
     "deploy-local": "npx hardhat run scripts/deploy.js --network localhost",
     "verify": "npx hardhat verify --network sepolia",
-    "node": "npx hardhat node"
+    "node": "npx hardhat node",
+    "balance": "npx hardhat run scripts/check-balance.js --network sepolia",
+    "balance-local": "npx hardhat run scripts/check-balance.js --network localhost",
+    "info": "npx hardhat run scripts/contract-info.js --network sepolia",
+    "info-local": "npx hardhat run scripts/contract-info.js --network localhost"
   },
   "repository": {
     "type": "git",
@@ -28,8 +32,7 @@
   "dependencies": {
     "commander": "^14.0.0",
     "crypto": "^1.0.1",
-    "fs-extra": "^11.3.1",
-    "ipfs-http-client": "^60.0.1"
+    "fs-extra": "^11.3.1"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.2.3",

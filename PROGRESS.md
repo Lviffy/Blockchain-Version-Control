@@ -34,54 +34,79 @@
 - ✅ Automatic repo ID generation and storage
 - ✅ Integration with local Hardhat network
 
-### 5. **Testing & Validation**
+### 5. **IPFS Integration** 🆕
+- ✅ IPFSService class with HTTP API integration
+- ✅ File upload to IPFS (with fallback mock for development)
+- ✅ Commit bundle creation and upload
+- ✅ Integration with commit workflow
+- ✅ Graceful fallback when IPFS unavailable
+
+### 6. **Sepolia Deployment Ready** 🆕
+- ✅ Environment configuration for Sepolia testnet
+- ✅ Deploy script updated for Sepolia
+- ✅ Balance checker script (`npm run balance`)
+- ✅ Contract info script (`npm run info`)
+- ✅ Comprehensive deployment guide
+- ✅ Security best practices documented
+
+### 7. **Testing & Validation**
 - ✅ Smart contract tests (repository creation, commits, checkpoints)
 - ✅ CLI functionality verified
 - ✅ End-to-end workflow tested successfully
+- ✅ IPFS integration tested
 
 ## 🔄 Current Status
 
-**Working Demo:**
+**Working Demo with IPFS & Sepolia Ready:**
 ```bash
 # 1. Configure wallet
-bvc config --private-key <key> --rpc-url http://127.0.0.1:8545
+bvc config --private-key <key> --rpc-url <url> --ipfs-endpoint <ipfs_url>
 
 # 2. Create repository (on blockchain!)
 bvc init my-project
 # ✅ Repository ID: my-project-1390849295786071768276380950238675083608645509734
 
-# 3. Add and commit files
+# 3. Add and commit files (with IPFS!)
 bvc add file.js
 bvc commit -m "My commit"
-# ✅ Commit hash: 26d140d533092cca0987415db6ec0bbd7dc1a7f66fe96fa5fd22f6ab2dcec501
+# ✅ Uploading files to IPFS...
+# ✅ Files uploaded to IPFS: mock_a1b2c3...
+# ✅ Commit recorded on blockchain!
 
-# 4. View history
+# 4. Deploy to Sepolia
+npm run deploy
+npm run balance  # Check Sepolia balance
+npm run info     # View contract on Sepolia
+
+# 5. View history
 bvc log
 ```
 
 ## 🚧 Next Implementation Steps
 
-### Phase 2: IPFS Integration
-- [ ] Upload files to IPFS during commit
-- [ ] Store IPFS CID in blockchain commits
-- [ ] File retrieval from IPFS
+### Phase 3: Advanced IPFS Features
+- [ ] Real IPFS daemon integration (remove mock fallback)
+- [ ] File retrieval and restoration from IPFS
+- [ ] IPFS pinning service integration
+- [ ] Delta compression for efficient storage
 
-### Phase 3: Blockchain Sync
-- [ ] Push commits to blockchain
+### Phase 4: Blockchain Sync Enhancement
 - [ ] Pull commits from blockchain
 - [ ] Merge conflict resolution
+- [ ] Multi-repository management
+- [ ] Gas optimization strategies
 
-### Phase 4: Advanced Features  
+### Phase 5: Production Features  
 - [ ] Clone repositories from blockchain
-- [ ] Checkpoint batching system
-- [ ] Branch management
-- [ ] Collaborative workflows
+- [ ] Advanced checkpoint batching
+- [ ] Branch management system
+- [ ] Collaborative workflows with permissions
 
-### Phase 5: Production Ready
-- [ ] Deploy to Sepolia testnet
-- [ ] Gas optimization
-- [ ] Security auditing
-- [ ] Performance improvements
+### Phase 6: Enterprise Ready
+- [ ] Multi-signature repository management
+- [ ] Role-based access control
+- [ ] Audit trail and compliance
+- [ ] Performance monitoring
 
 ## 📊 Technical Architecture
 
