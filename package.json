@@ -1,10 +1,10 @@
 {
-  "name": "bvc",
+  "name": "bvc-eth",
   "version": "1.0.0",
   "description": "Blockchain Version Control - Decentralized version control system powered by blockchain and IPFS",
-  "main": "index.js",
+  "main": "bin/bvc.js",
   "bin": {
-    "bvc": "./bin/bvc.js"
+    "bvc": "bin/bvc.js"
   },
   "scripts": {
     "test": "npx hardhat test",
@@ -23,9 +23,21 @@
     "type": "git",
     "url": "git+https://github.com/Lviffy/BVC.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "blockchain",
+    "version-control",
+    "git",
+    "ipfs",
+    "decentralized",
+    "ethereum",
+    "cli"
+  ],
+  "author": "Lviffy",
+  "license": "MIT",
   "type": "commonjs",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "bugs": {
     "url": "https://github.com/Lviffy/BVC/issues"
   },
@@ -36,6 +48,7 @@
     "cli-table3": "^0.6.5",
     "commander": "^14.0.0",
     "crypto": "^1.0.1",
+    "ethers": "^5.8.0",
     "figlet": "^1.8.2",
     "fs-extra": "^11.3.1",
     "inquirer": "^12.9.4",
@@ -48,7 +61,6 @@
     "chai": "^6.0.1",
     "dotenv": "^17.2.2",
     "ethereum-waffle": "^4.0.10",
-    "ethers": "^5.8.0",
     "hardhat": "^2.26.3",
     "mocha": "^11.7.2"
   }
