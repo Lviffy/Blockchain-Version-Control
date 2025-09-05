@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+// Simple wrapper that changes to the correct directory
+const path = require('path');
+const { spawn } = require('child_process');
+
+// Find the project root (where package.json is)
+const projectRoot = __dirname;
+
+// Change to project root and run the main script
+process.chdir(projectRoot);
+
+// Import and run the main CLI
+require('./bin/bvc.js');
