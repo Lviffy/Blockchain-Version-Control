@@ -2,6 +2,7 @@
 
 const { Command } = require('commander');
 const CLIUtils = require('../lib/utils/cli');
+const packageJson = require('../package.json');
 
 // Import commands
 const initCommand = require('../lib/commands/init');
@@ -30,7 +31,7 @@ process.on('unhandledRejection', (error) => {
 program
   .name('bvc')
   .description(CLIUtils.colors.primary('🔗 Blockchain Version Control - Decentralized Git powered by blockchain and IPFS'))
-  .version('1.0.0')
+  .version(packageJson.version)
   .option('-v, --verbose', 'Enable verbose output')
   .option('--debug', 'Enable debug mode')
   .hook('preAction', (thisCommand, actionCommand) => {
