@@ -1,14 +1,24 @@
 #!/usr/bin/env node
 
-// Simple wrapper that changes to the correct directory
+// Simple wrapper that preserves the current working directory
 const path = require('path');
-const { spawn } = require('child_process');
 
-// Find the project root (where package.json is)
+// Find the project root (where package.json is) but don't change to it
 const projectRoot = __dirname;
 
-// Change to project root and run the main script
-process.chdir(projectRoot);
+// Store the original working directory
+const originalCwd = process.cwd();
 
-// Import and run the main CLI
+// Temporarily add the project root to module paths so requires work
+const Module = require('module');
+const originalResolveFilename = Module._resolveFilename;
+Module._resolveFilename = function(request, parent, isMain) {
+  // For relative requires starting with './', use the project root
+  if (request.startsWith('./') && parent && parent.filename === __filename) {
+    request = path.resolve(projectRoot, request.substring(2));
+  }
+  return originalResolveFilename.call(this, request, parent, isMain);
+};
+
+// Import and run the main CLI without changing directories
 require('./bin/bvc.js');
