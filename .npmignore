@@ -26,6 +26,7 @@ coverage/
 *.md
 !README.md
 !BVC_COMMAND_GUIDE.md
+!QUICK_START.md
 
 # Development files
 hardhat.config.js
@@ -95,11 +96,9 @@ test-repo/
 
 # Scripts (keep essential ones)
 scripts/
-!scripts/deploy.js
-!scripts/contract-info.js
-!scripts/check-sepolia-setup.js
+!scripts/postinstall.js
 
-# Keep only essential contract files
-contracts/
-!contracts/BVC.sol
-!contracts/contract-address.json
+# Keep only essential contract files - commented out to include them
+# contracts/
+# !contracts/BVC.sol
+# !contracts/contract-address.json

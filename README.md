@@ -5,6 +5,8 @@ A decentralized version control system inspired by Git, but powered by **blockch
 [![npm version](https://badge.fury.io/js/bvc-eth.svg)](https://badge.fury.io/js/bvc-eth)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+> **📦 NPM Package Users**: After installing via npm, BVC works out-of-the-box with Sepolia testnet! Just run `bvc config --setup` to get started. No local blockchain deployment needed.
+
 ## ✨ Features
 
 - 🚀 **Decentralized**: No central server required
@@ -13,20 +15,23 @@ A decentralized version control system inspired by Git, but powered by **blockch
 - 💰 **Cost Optimized**: Local commits (free) + blockchain checkpoints (efficient)
 - 🔐 **Cryptographically secure**: SHA256 file hashing
 - 💻 **Git-like CLI**: Familiar commands and workflows
+- 🌍 **Multi-network**: Supports Sepolia testnet, local dev, and mainnet
 
 ## 📦 Installation
 
 ### Global Installation (Recommended)
 ```bash
 npm install -g bvc-eth
+bvc config --setup  # Quick setup wizard
 ```
 
 ### Local Installation
 ```bash
 npm install bvc-eth
+npx bvc config --setup  # Quick setup wizard
 ```
 
-### Manual Installation
+### For Development
 ```bash
 git clone https://github.com/Lviffy/BVC.git
 cd BVC
@@ -38,8 +43,17 @@ npm link  # or use: node bin/bvc.js
 
 ### 1. Configure BVC
 ```bash
+# Global installation
 bvc config --setup
+
+# Local installation  
+npx bvc config --setup
 ```
+
+**What you'll need:**
+- Ethereum wallet private key (create a new one for testing!)
+- Network choice (Sepolia testnet recommended for beginners)
+- Test ETH from [Sepolia Faucet](https://sepoliafaucet.com) (free!)
 
 ### 2. Create a Repository
 ```bash

@@ -4,17 +4,29 @@
 
 ### 1. Install BVC
 ```bash
+# Global installation (recommended)
 npm install -g bvc-eth
+
+# Local installation (in your project)
+npm install bvc-eth
 ```
 
 ### 2. Configure (Required)
 ```bash
+# Global installation
 bvc config --setup
+
+# Local installation
+npx bvc config --setup
 ```
 **You'll need:**
-- Ethereum wallet private key
-- RPC URL (Sepolia recommended)
-- IPFS endpoint
+- Ethereum wallet private key (create a new one for testing!)
+- Network selection (Sepolia testnet recommended)
+- IPFS endpoint (optional)
+
+**For Sepolia testnet:**
+- Get test ETH from: https://sepoliafaucet.com
+- Pre-deployed contract available (no setup needed)
 
 ### 3. Create Repository
 ```bash

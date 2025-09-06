@@ -76,6 +76,64 @@ setupCommand
 
 const program = new Command();
 
+program
+  .name('bvc')
+  .description(CLIUtils.colors.primary('🔗 Blockchain Version Control - Decentralized Git powered by blockchain and IPFS'))
+  .version(packageJson.version)
+  .option('-v, --verbose', 'Enable verbose output')
+  .option('--debug', 'Enable debug mode')
+  .option('-y, --yes', 'Skip confirmation prompts')
+  .option('--check-config', 'Verify configuration and connection')
+  .hook('preAction', async (thisCommand, actionCommand) => {
+    // Show helpful info for --check-config
+    if (thisCommand.opts().checkConfig) {
+      const InitializationChecker = require('../lib/utils/initialization-checker');
+      console.log('🔍 BVC Configuration Check');
+      console.log('─'.repeat(30));
+      
+      const checker = new InitializationChecker();
+      const result = await checker.checkConfiguration();
+      
+      if (result.isValid) {
+        console.log('✅ Configuration looks good!');
+        
+        // Also test blockchain connection
+        console.log('🌐 Testing blockchain connection...');
+        const connResult = await checker.validateBlockchainConnection();
+        
+        if (connResult.isValid) {
+          console.log('✅ Blockchain connection successful!');
+          console.log(`📡 Connected to: ${result.networkConfig.name}`);
+        } else {
+          console.error(InitializationChecker.formatIssues(connResult.issues));
+        }
+        
+        process.exit(result.isValid && connResult?.isValid ? 0 : 1);
+      } else {
+        console.error(InitializationChecker.formatIssues(result.issues));
+        process.exit(1);
+      }
+    }
+    
+    // Set debug mode if requested
+    if (program.opts().debug) {
+      process.env.DEBUG = 'true';
+    }
+    
+    // Set non-interactive mode
+    if (program.opts().yes) {
+      process.env.BVC_NON_INTERACTIVE = 'true';
+    }
+    
+    // Check for updates
+    await checkForUpdates();
+    
+    // Show banner for main commands (not for help)
+    if (actionCommand.name() !== 'help' && !actionCommand.parent) {
+      CLIUtils.showBanner();
+    }
+  });
+
 // Global error handler
 process.on('uncaughtException', (error) => {
   CLIUtils.handleError(error, 'Uncaught Exception');
@@ -128,33 +186,6 @@ async function checkForUpdates() {
   }
 }
 
-program
-  .name('bvc')
-  .description(CLIUtils.colors.primary('🔗 Blockchain Version Control - Decentralized Git powered by blockchain and IPFS'))
-  .version(packageJson.version)
-  .option('-v, --verbose', 'Enable verbose output')
-  .option('--debug', 'Enable debug mode')
-  .option('-y, --yes', 'Skip confirmation prompts')
-  .hook('preAction', async (thisCommand, actionCommand) => {
-    // Set debug mode if requested
-    if (program.opts().debug) {
-      process.env.DEBUG = 'true';
-    }
-    
-    // Set non-interactive mode
-    if (program.opts().yes) {
-      process.env.BVC_NON_INTERACTIVE = 'true';
-    }
-    
-    // Check for updates
-    await checkForUpdates();
-    
-    // Show banner for main commands (not for help)
-    if (actionCommand.name() !== 'help' && !actionCommand.parent) {
-      CLIUtils.showBanner();
-    }
-  });
-
 // Register commands with enhanced descriptions
 program.addCommand(setupCommand);
 program.addCommand(initCommand);
@@ -176,6 +207,37 @@ program.alias('co', 'checkout'); // if implemented
 program.alias('ls', 'list');
 
 // Custom help command
+program
+  .command('check')
+  .description('Check BVC configuration and blockchain connection')
+  .action(async () => {
+    const InitializationChecker = require('../lib/utils/initialization-checker');
+    console.log('🔍 BVC Configuration Check');
+    console.log('─'.repeat(30));
+    
+    const checker = new InitializationChecker();
+    const result = await checker.checkConfiguration();
+    
+    if (result.isValid) {
+      console.log('✅ Configuration looks good!');
+      
+      // Also test blockchain connection
+      console.log('🌐 Testing blockchain connection...');
+      const connResult = await checker.validateBlockchainConnection();
+      
+      if (connResult.isValid) {
+        console.log('✅ Blockchain connection successful!');
+        console.log(`📡 Connected to: ${result.networkConfig.name}`);
+      } else {
+        console.error(InitializationChecker.formatIssues(connResult.issues));
+        process.exit(1);
+      }
+    } else {
+      console.error(InitializationChecker.formatIssues(result.issues));
+      process.exit(1);
+    }
+  });
+
 program
   .command('help')
   .description('Display help information')
