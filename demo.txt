@@ -1,0 +1,2 @@
+This is a demo file to test the enhanced CLI UI.
+It contains some sample content for testing purposes.
