@@ -16,6 +16,7 @@ A decentralized version control system inspired by Git, but powered by **blockch
 - 🔐 **Cryptographically secure**: SHA256 file hashing
 - 💻 **Git-like CLI**: Familiar commands and workflows
 - 🌍 **Multi-network**: Supports Sepolia testnet, local dev, and mainnet
+- ↩️ **Version Revert**: Revert to any previous commit state
 
 ## 📦 Installation
 
@@ -70,6 +71,12 @@ bvc commit -m "Initial commit"
 ### 4. Push to Blockchain
 ```bash
 bvc push
+```
+
+### 5. Version Control (Optional)
+```bash
+bvc log                          # View commit history
+bvc revert <commit-hash>         # Revert to any previous version
 ```
 
 ## 💰 Cost Optimization
@@ -137,6 +144,13 @@ bvc add *.js                     # Add with glob patterns
 ```bash
 bvc commit -m "Add feature"       # Local commit (free)
 bvc commit --blockchain -m "msg"  # Direct blockchain commit
+```
+
+#### `bvc revert <commit-hash>` - Revert to specific commit
+```bash
+bvc revert 436b0deb               # Revert to specific commit
+bvc revert abc123 --force         # Force revert (overwrite changes)
+bvc revert def456 --no-backup     # Skip backup creation
 ```
 
 ### Synchronization
@@ -225,6 +239,19 @@ bvc commit -m "commit 1"               # Free
 bvc commit -m "commit 2"               # Free
 bvc commit -m "commit 3"               # Free
 bvc checkpoint --message "All commits" # Gas fee #1 only
+```
+
+### Version Control with Revert
+```bash
+# View commit history
+bvc log
+
+# Revert to previous version
+bvc revert 436b0deb               # Revert to specific commit
+bvc status                        # Check restored files
+
+# Continue development
+bvc add . && bvc commit -m "Fix after revert"
 ```
 
 ## 🏗️ Architecture

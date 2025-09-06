@@ -18,6 +18,7 @@ const cloneCommand = require('../lib/commands/clone');
 const configCommand = require('../lib/commands/config');
 const checkpointCommand = require('../lib/commands/checkpoint');
 const listCommand = require('../lib/commands/list');
+const revertCommand = require('../lib/commands/revert');
 
 // Create setup command
 const setupCommand = new Command('setup');
@@ -199,12 +200,14 @@ program.addCommand(cloneCommand);
 program.addCommand(configCommand);
 program.addCommand(checkpointCommand);
 program.addCommand(listCommand);
+program.addCommand(revertCommand);
 
 // Add command aliases for better UX
 program.alias('st', 'status');
 program.alias('ci', 'commit');
 program.alias('co', 'checkout'); // if implemented
 program.alias('ls', 'list');
+program.alias('rv', 'revert');
 
 // Custom help command
 program
