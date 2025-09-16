@@ -4,21 +4,36 @@
   "description": "Blockchain Version Control - Decentralized version control system powered by blockchain and IPFS",
   "main": "bin/bvc.js",
   "bin": {
-    "bvc": "bin/bvc.js"
+    "bvc": "bin/bvc.js",
+    "bvc-minimal": "bin/bvc-minimal.js"
   },
   "scripts": {
     "test": "npx hardhat test",
     "test:all": "./test-all-features.sh",
+    "test:security": "./scripts/security-audit.sh",
     "compile": "npx hardhat compile",
     "deploy": "npx hardhat run scripts/deploy.js --network sepolia",
     "deploy-local": "npx hardhat run scripts/deploy.js --network localhost",
+    "deploy-mainnet": "npx hardhat run scripts/deploy.js --network mainnet",
     "verify": "npx hardhat verify --network sepolia",
+    "verify-mainnet": "npx hardhat verify --network mainnet",
     "node": "npx hardhat node",
     "balance": "npx hardhat run scripts/check-balance.js --network sepolia",
     "balance-local": "npx hardhat run scripts/check-balance.js --network localhost",
+    "balance-mainnet": "npx hardhat run scripts/check-balance.js --network mainnet",
     "info": "npx hardhat run scripts/contract-info.js --network sepolia",
     "info-local": "npx hardhat run scripts/contract-info.js --network localhost",
+    "info-mainnet": "npx hardhat run scripts/contract-info.js --network mainnet",
     "check-setup": "node scripts/check-sepolia-setup.js",
+    "config-validate": "node lib/config/manager.js",
+    "config-secure": "node -e \"const ConfigManager = require('./lib/config/manager'); new ConfigManager().generateSecureTemplate()\"",
+    "gas-report": "npx hardhat test --gas-reporter",
+    "coverage": "npx hardhat coverage",
+    "lint": "eslint lib/ bin/ scripts/ --fix",
+    "format": "prettier --write \"**/*.{js,json,md}\"",
+    "precommit": "npm run lint && npm run test && npm run test:security",
+    "cli:minimal": "ln -sf bin/bvc-minimal.js bin/bvc",
+    "cli:full": "ln -sf bin/bvc.js bin/bvc",
     "postinstall": "node scripts/postinstall.js"
   },
   "repository": {
